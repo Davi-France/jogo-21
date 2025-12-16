@@ -1,0 +1,68 @@
+.home {
+  background-color: #ededed;
+  min-height: 100vh;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.card {
+  border: solid 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  padding: 3.5rem 3rem;
+  position: relative;
+}
+
+.input-group {
+  width: 100%;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #999;
+  padding: 8px 4px;
+  font-size: 1.1rem;
+  margin-top: -3rem;
+  color: #333;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-bottom-color: #366cd4;
+}
+
+.actions {
+  width: 100%;
+}
+
+.back-link {
+  font-size: 0.9rem;
+  color: #366cd4;
+}
+
+.play-btn {
+  font-size: 1rem;
+  background-color: #366cd4;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 200;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 9px 60px;
+}

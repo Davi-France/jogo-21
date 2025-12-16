@@ -1,0 +1,19 @@
+<header-component></header-component>
+
+<div class="dashboard-header">
+  <div class="stat win">
+    <h3>Vitórias</h3>
+    <span>{{ wins }}</span>
+  </div>
+
+  <div class="stat loss">
+    <h3>Derrotas</h3>
+    <span>{{ losses }}</span>
+  </div>
+</div>
+
+<div class="actions">
+  <button (click)="startGame()">
+    🎮 Iniciar Nova Partida
+  </button>
+</div>

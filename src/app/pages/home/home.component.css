@@ -1,0 +1,51 @@
+.home {
+  min-height: 100vh;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.card {
+  border: solid 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 620px;
+  min-height: 380px;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.btn-accessar {
+  width: 100%;
+  max-width: 400px;
+  height: 130px;
+  background-color: #366cd4;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 30px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btn-accessar:hover {
+  opacity: 0.9;
+}
+
+.register-link {
+  font-size: 18px;
+  margin-left: 60%;
+  cursor: pointer;
+  margin-top: 32px;
+  color: #366cd4;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

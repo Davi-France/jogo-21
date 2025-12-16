@@ -1,0 +1,26 @@
+<section class="home flex flex-col items-center justify-center px-4">
+  <span class="flex flex-row items-center gap-9 justify-center mb-12">
+    <img src="/svg-carta.svg" alt="Jogo 21" class="logo" />
+    <h1 class="font-normal text-black">Jogo 21</h1>
+  </span>
+
+  <div class="card bg-white flex flex-col justify-center rounded-lg w-full max-w-xl">
+
+    <div class="input-group">
+      <label>E-mail</label>
+      <input type="email" placeholder="" [(ngModel)]="email" />
+    </div>
+
+    <div class="actions flex justify-between items-center mt-12">
+      <a routerLink="/" class="back-link">
+        voltar
+      </a>
+
+      <button class="relative play-btn flex items-center justify-center gap-2" (click)="login()">
+        jogar
+        <mat-icon class="absolute right-2">chevron_right</mat-icon>
+      </button>
+    </div>
+
+  </div>
+</section>
