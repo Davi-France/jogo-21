@@ -1,31 +1,115 @@
-<div class="p-6">
-  <h2 class="text-2xl font-bold mb-4">Histórico de Partidas</h2>
+<header-component></header-component>
 
-  <div *ngIf="matches.length === 0" class="text-gray-400">
+<div class="p-4">
+  <div *ngIf="matches.length === 0" class="no-matches">
     Nenhuma partida registrada.
   </div>
 
-  <div *ngFor="let match of matches" class="mb-4 p-4 rounded bg-gray-800 text-white">
-    <div class="flex justify-between items-center">
-      <span class="text-sm text-gray-400">
-        {{ match.date | date:'dd/MM/yyyy HH:mm' }}
-      </span>
+  <div class="matches-list mx-10">
+    <a routerLink="/dashboard" class="dashboard-link">
+      <mat-icon>chevron_left</mat-icon>
+      <span>Dashboard</span>
+    </a>
 
-      <span class="font-bold" [class.text-green-400]="match.result === MatchResult.WIN"
-        [class.text-red-400]="match.result === MatchResult.LOSS">
-        {{ match.result }}
-      </span>
+    <h2 class="history-title w-full text-center my-14">
+      Histórico de Partidas
+    </h2>
+
+    <div class="table-header hidden sm:flex flex-row justify-between items-start px-8 mb-4">
+      <div class="header-column w-1/4">
+        <div class="column-label">Jogador</div>
+      </div>
+      <div class="header-column w-1/4">
+        <div class="column-label">Dealer</div>
+      </div>
+      <div class="header-column w-1/4 flex flex-col items-center">
+        <div class="column-label">Resultado</div>
+      </div>
+      <div class="header-column w-1/4 flex flex-col items-end">
+        <div class="column-label text-right w-full">Data/Hora</div>
+      </div>
     </div>
 
-    <div class="mt-2 text-sm">
-      <p>Jogador: {{ match.playerScore }} pontos</p>
-      <p>Dealer: {{ match.dealerScore }} pontos</p>
-    </div>
+    <div *ngFor="let match of matches; let last = last" class="match-row" [class.last-row]="last">
+      <!-- Layout desktop: 4 colunas lado a lado -->
+      <div class="desktop-layout hidden sm:flex flex-row justify-between items-start px-8">
+        <!-- Jogador -->
+        <div class="match-column flex flex-col w-1/4">
+          <div class="cards-container flex flex-wrap justify-start gap-1">
+            <img *ngFor="let card of match.playerCards" [src]="card.image" class="card-image" alt="Carta jogador">
+          </div>
+        </div>
 
-    <div class="mt-3 flex gap-2">
-      <img *ngFor="let card of match.playerCards" [src]="card.image" class="h-16" alt="Carta jogador" />
+        <!-- Dealer -->
+        <div class="match-column flex flex-col w-1/4">
+          <div class="cards-container flex flex-wrap justify-start gap-1">
+            <img *ngFor="let card of match.dealerCards" [src]="card.image" class="card-image" alt="Carta dealer">
+          </div>
+        </div>
 
-      <img *ngFor="let card of match.dealerCards" [src]="card.image" class="h-16" alt="Carta dealer" />
+        <!-- Resultado -->
+        <div class="match-column flex flex-col w-1/4 items-center">
+          <div class="result-content flex flex-col items-center justify-center">
+            <img [src]="match.result === MatchResult.WIN ? './face-smile.svg' : './face-bad.svg'" class="result-icon"
+              alt="Resultado">
+            <span class="result-label mt-1">
+              {{ match.result === MatchResult.WIN ? 'VITÓRIA' : 'DERROTA' }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Data/Hora -->
+        <div class="match-column flex flex-col w-1/4 items-end">
+          <div class="datetime-content flex flex-row items-baseline gap-3 justify-end w-full">
+            <div class="date">{{ match.date | date:'dd-MM-yyyy' }}</div>
+            <div class="time">{{ match.date | date:'HH:mm' }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout mobile: grid 2x2 -->
+      <div class="mobile-layout sm:hidden">
+        <div class="mobile-grid grid grid-cols-2 gap-x-4 gap-y-4">
+          <!-- Jogador -->
+          <div class="mobile-column flex flex-col">
+            <div class="column-label mb-2">Jogador</div>
+            <div class="cards-container flex flex-wrap justify-start gap-1">
+              <img *ngFor="let card of match.playerCards" [src]="card.image" class="card-image-mobile"
+                alt="Carta jogador">
+            </div>
+          </div>
+
+          <!-- Resultado -->
+          <div class="mobile-column flex flex-col items-center">
+            <div class="column-label mb-2">Resultado</div>
+            <div class="result-content flex flex-col items-center justify-center">
+              <img [src]="match.result === MatchResult.WIN ? './face-smile.svg' : './face-bad.svg'"
+                class="result-icon-mobile" alt="Resultado">
+              <span class="result-label-mobile mt-1">
+                {{ match.result === MatchResult.WIN ? 'VITÓRIA' : 'DERROTA' }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Dealer -->
+          <div class="mobile-column flex flex-col">
+            <div class="column-label mb-2">Dealer</div>
+            <div class="cards-container flex flex-wrap justify-start gap-1">
+              <img *ngFor="let card of match.dealerCards" [src]="card.image" class="card-image-mobile"
+                alt="Carta dealer">
+            </div>
+          </div>
+
+          <!-- Data/Hora -->
+          <div class="mobile-column flex flex-col items-end">
+            <div class="column-label mb-2 text-right w-full">Data/Hora</div>
+            <div class="datetime-content flex flex-row items-baseline gap-2 justify-end w-full">
+              <div class="date-mobile">{{ match.date | date:'dd-MM-yyyy' }}</div>
+              <div class="time-mobile">{{ match.date | date:'HH:mm' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

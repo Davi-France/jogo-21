@@ -1,19 +1,41 @@
 <header-component></header-component>
 
-<div class="dashboard-header">
-  <div class="stat win">
-    <h3>Vitórias</h3>
-    <span>{{ wins }}</span>
+<section class="flex flex-col justify-between mx-32 gap-40">
+  <div class="dashboard-header  flex justify-around">
+
+    <div class="stat">
+      <img src="/cards-svg-foto.svg" alt="Partidas" />
+      <div class="stat-info">
+        <span class="label">Partidas</span>
+        <span class="value">{{ wins + losses }}</span>
+      </div>
+    </div>
+
+    <div class="stat">
+      <img src="/face-smile.svg" alt="Vitórias" />
+      <div class="stat-info">
+        <span class="label">Vitórias</span>
+        <span class="value">{{ wins }}</span>
+      </div>
+    </div>
+
+    <div class="stat">
+      <img src="/face-bad.svg" alt="Derrotas" />
+      <div class="stat-info">
+        <span class="label">Derrotas</span>
+        <span class="value">{{ losses }}</span>
+      </div>
+    </div>
   </div>
 
-  <div class="stat loss">
-    <h3>Derrotas</h3>
-    <span>{{ losses }}</span>
+  <div class="actions">
+    <button class="flex flex-row items-center gap-9" (click)="startGame()"> Iniciar Nova Partida <img
+        src="./cards-svg-naipe-foto.svg" alt="">
+    </button>
   </div>
-</div>
 
-<div class="actions">
-  <button (click)="startGame()">
-    🎮 Iniciar Nova Partida
-  </button>
-</div>
+  <div class="history-link">
+    <a href="/history"><img src="/history-link.svg" alt=""> Ver Histórico de Partidas</a>
+  </div>
+
+</section>

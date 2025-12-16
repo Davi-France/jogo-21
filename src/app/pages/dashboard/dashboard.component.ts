@@ -10,7 +10,8 @@ import { HeaderComponent } from '../../components/header/header.component';
   standalone: true,
   selector: 'app-dashboard',
   imports: [CommonModule, HeaderComponent],
-  templateUrl: './dashboard.component.html'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
 
