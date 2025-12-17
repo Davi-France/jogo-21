@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { DeckService } from '../../core/services/deck.service';
 import { GameService } from '../../core/services/game.service';
 import { Card } from '../../shared/models/card.model';
@@ -7,11 +9,24 @@ import { StorageService } from '../../core/services/storage.service';
 import { AuthService } from '../../core/services/auth.service';
 import { MatchResult } from '../../shared/models/match.model';
 
+import { GameToastComponent } from '../../components/shared/game-toast/game-toast.component';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from '../../components/header/header.component';
+
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './game.component.html'
+  imports: [
+    CommonModule,
+    MatSnackBarModule,
+    GameToastComponent,
+    RouterModule,
+    MatIconModule,
+    HeaderComponent
+  ],
+  templateUrl: './game.component.html',
+  styleUrl: './game.component.css'
 })
 export class GameComponent implements OnInit {
 
@@ -25,11 +40,11 @@ export class GameComponent implements OnInit {
   message = '';
   showDealerCards = false;
 
-  // 🔥 ADICIONADO PARA ANIMAÇÃO
   drawingCard: Card | null = null;
   startAnimation = false;
 
   constructor(
+    private snackBar: MatSnackBar,
     private deckService: DeckService,
     private gameService: GameService,
     private storageService: StorageService,
@@ -38,6 +53,24 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.startGame();
+  }
+
+  restartGame(): void {
+    this.startGame();
+  }
+
+  showToast(type: 'win' | 'lose') {
+    this.snackBar.openFromComponent(GameToastComponent, {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: type === 'win' ? ['toast-win'] : ['toast-lose'],
+      data: {
+        type,
+        title: type === 'win' ? 'Vitória!' : 'Derrota',
+        message: type === 'win' ? 'Parabéns!' : 'Não desista!'
+      }
+    });
   }
 
   startGame(): void {
@@ -70,23 +103,19 @@ export class GameComponent implements OnInit {
     this.dealerScore = this.gameService.calculateScore(this.dealerCards);
   }
 
-  // 🃏 PEDIR COM ANIMAÇÃO
   pedir(): void {
     if (this.gameOver || this.drawingCard) return;
 
     this.deckService.draw(1).subscribe(cards => {
       const card = cards[0];
 
-      // cria carta animada
       this.drawingCard = card;
       this.startAnimation = false;
 
-      // força render antes de animar
       setTimeout(() => {
         this.startAnimation = true;
       });
 
-      // após animação
       setTimeout(() => {
         this.playerCards.push(card);
         this.drawingCard = null;
@@ -140,10 +169,7 @@ export class GameComponent implements OnInit {
     this.gameOver = true;
     this.showDealerCards = true;
 
-    this.message =
-      result === MatchResult.WIN
-        ? '🎉 Você venceu!'
-        : '😞 Você perdeu!';
+    this.showToast(result === MatchResult.WIN ? 'win' : 'lose');
 
     const user = this.authService.getCurrentUser();
     if (!user) return;

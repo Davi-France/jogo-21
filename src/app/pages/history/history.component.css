@@ -63,7 +63,6 @@
   border-bottom: none;
 }
 
-/* Títulos do cabeçalho */
 .column-label {
   color: #000;
   font-size: 16px;
@@ -71,21 +70,17 @@
   height: 24px;
 }
 
-/* Altura mínima para container de cartas */
 .cards-container {
   min-height: 80px;
 }
 
 
-
-/* Cartas mobile */
 .card-image-mobile {
   height: 48px;
   width: 34px;
   object-fit: cover;
 }
 
-/* Resultado */
 .result-icon {
   height: 40px;
   width: 40px;
@@ -113,7 +108,6 @@
   min-width: 80px;
 }
 
-/* Data/Hora - Data e hora lado a lado */
 .datetime-content {
   height: 24px;
   display: flex;
@@ -144,12 +138,10 @@
   font-weight: 400;
 }
 
-/* Mobile columns */
 .mobile-column {
   min-height: 100px;
 }
 
-/* Ajustes para manter alinhamento */
 @media (max-width: 639px) {
   .match-row {
     padding: 16px;

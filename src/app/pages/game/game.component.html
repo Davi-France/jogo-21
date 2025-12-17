@@ -1,51 +1,64 @@
-<div class="min-h-screen bg-green-800 text-white flex flex-col items-center p-6">
+<div class="game-page">
 
-  <section class="mb-10 text-center">
-    <h2 class="text-xl font-bold mb-2">Dealer</h2>
+  <header-component></header-component>
 
-    <div class="flex gap-2 justify-center">
-      <ng-container *ngFor="let card of dealerCards; let i = index">
-        <img *ngIf="showDealerCards || i === 0; else hiddenCard" [src]="card.image" class="w-24 rounded" />
+  <div class="game-container">
 
-        <ng-template #hiddenCard>
-          <img src="/bgcarta.png" class="w-24 rounded" />
-        </ng-template>
-      </ng-container>
+    <div class="game-board">
+
+      <section class="dealer-section">
+        <div class="dealer-area">
+          <ng-container *ngFor="let card of dealerCards; let i = index">
+            <img *ngIf="showDealerCards || i === 0; else hiddenCard" [src]="card.image" class="dealer-card" />
+
+            <ng-template #hiddenCard>
+              <img src="/bgcarta.png" class="dealer-card" />
+            </ng-template>
+          </ng-container>
+        </div>
+
+        <div class="dealer-score" *ngIf="showDealerCards">
+          {{ dealerScore }}
+        </div>
+      </section>
+
+      <div class="deck-area">
+        <img src="/baralho.png" class="deck-img" />
+
+        <img *ngIf="drawingCard" [src]="drawingCard.image" class="flying-card" [class.animate]="startAnimation" />
+      </div>
+
+      <div class="mesa-container">
+        <img src="/mesa-svg.svg" class="mesa-img mesa-click" (click)="restartGame()" />
+      </div>
+
+      <section class="player-section">
+        <div class="player-cards">
+          <img *ngFor="let card of playerCards" [src]="card.image" class="player-card" />
+        </div>
+
+        <div class="player-score">{{ playerScore }}</div>
+      </section>
+
+      <div class="actions" *ngIf="!gameOver">
+        <button class="btn-action btn-pass" (click)="passar()">
+          <img src="/passar-svg.svg" />
+          PASSAR
+        </button>
+
+        <button class="btn-action btn-hit" (click)="pedir()">
+          <img src="/pedir-svg.svg" />
+          PEDIR
+        </button>
+      </div>
+
+      <a routerLink="/dashboard" class="dashboard-link">
+        <mat-icon>chevron_left</mat-icon>
+        <span>Dashboard</span>
+      </a>
     </div>
 
-    <p class="mt-2" *ngIf="showDealerCards">
-      Pontuação: {{ dealerScore }}
-    </p>
-  </section>
-
-  <div class="deck-area my-6">
-    <img src="/baralho.png" class="deck-img" />
-
-    <img *ngIf="drawingCard" [src]="drawingCard.image" class="flying-card" [class.animate]="startAnimation" />
   </div>
 
-  <section class="text-center">
-    <h2 class="text-xl font-bold mb-2">Você</h2>
-
-    <div class="player-area flex gap-2 justify-center">
-      <img *ngFor="let card of playerCards" [src]="card.image" class="w-24 rounded" />
-    </div>
-
-    <p class="mt-2">Pontuação: {{ playerScore }}</p>
-  </section>
-
-  <div class="mt-8 flex gap-4" *ngIf="!gameOver">
-    <button class="px-6 py-2 bg-blue-600 rounded hover:bg-blue-700" (click)="pedir()">
-      PEDIR
-    </button>
-
-    <button class="px-6 py-2 bg-yellow-600 rounded hover:bg-yellow-700" (click)="passar()">
-      PASSAR
-    </button>
-  </div>
-
-  <div class="mt-6 text-2xl font-bold">
-    {{ message }}
-  </div>
 
 </div>

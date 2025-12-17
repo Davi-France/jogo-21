@@ -27,9 +27,6 @@ export class DeckService {
     return of(cards);
   }
 
-  // ==============================
-  // Deck
-  // ==============================
   private createDeck(): Card[] {
     const deck: Card[] = [];
 

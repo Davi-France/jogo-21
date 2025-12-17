@@ -11,7 +11,6 @@ export class StorageService {
     return JSON.parse(localStorage.getItem(this.MATCHES_KEY) || '[]');
   }
 
-
   saveMatch(match: Match) {
     const matches = this.getMatches();
     matches.push(match);

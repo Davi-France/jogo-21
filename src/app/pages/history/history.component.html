@@ -31,23 +31,20 @@
     </div>
 
     <div *ngFor="let match of matches; let last = last" class="match-row" [class.last-row]="last">
-      <!-- Layout desktop: 4 colunas lado a lado -->
+
       <div class="desktop-layout hidden sm:flex flex-row justify-between items-start px-8">
-        <!-- Jogador -->
         <div class="match-column flex flex-col w-1/4">
           <div class="cards-container flex flex-wrap justify-start gap-1">
             <img *ngFor="let card of match.playerCards" [src]="card.image" class="card-image" alt="Carta jogador">
           </div>
         </div>
 
-        <!-- Dealer -->
         <div class="match-column flex flex-col w-1/4">
           <div class="cards-container flex flex-wrap justify-start gap-1">
             <img *ngFor="let card of match.dealerCards" [src]="card.image" class="card-image" alt="Carta dealer">
           </div>
         </div>
 
-        <!-- Resultado -->
         <div class="match-column flex flex-col w-1/4 items-center">
           <div class="result-content flex flex-col items-center justify-center">
             <img [src]="match.result === MatchResult.WIN ? './face-smile.svg' : './face-bad.svg'" class="result-icon"
@@ -58,7 +55,7 @@
           </div>
         </div>
 
-        <!-- Data/Hora -->
+
         <div class="match-column flex flex-col w-1/4 items-end">
           <div class="datetime-content flex flex-row items-baseline gap-3 justify-end w-full">
             <div class="date">{{ match.date | date:'dd-MM-yyyy' }}</div>
@@ -67,10 +64,8 @@
         </div>
       </div>
 
-      <!-- Layout mobile: grid 2x2 -->
       <div class="mobile-layout sm:hidden">
         <div class="mobile-grid grid grid-cols-2 gap-x-4 gap-y-4">
-          <!-- Jogador -->
           <div class="mobile-column flex flex-col">
             <div class="column-label mb-2">Jogador</div>
             <div class="cards-container flex flex-wrap justify-start gap-1">
@@ -79,7 +74,6 @@
             </div>
           </div>
 
-          <!-- Resultado -->
           <div class="mobile-column flex flex-col items-center">
             <div class="column-label mb-2">Resultado</div>
             <div class="result-content flex flex-col items-center justify-center">
@@ -91,7 +85,7 @@
             </div>
           </div>
 
-          <!-- Dealer -->
+
           <div class="mobile-column flex flex-col">
             <div class="column-label mb-2">Dealer</div>
             <div class="cards-container flex flex-wrap justify-start gap-1">
@@ -100,7 +94,6 @@
             </div>
           </div>
 
-          <!-- Data/Hora -->
           <div class="mobile-column flex flex-col items-end">
             <div class="column-label mb-2 text-right w-full">Data/Hora</div>
             <div class="datetime-content flex flex-row items-baseline gap-2 justify-end w-full">

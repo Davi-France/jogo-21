@@ -1,34 +1,181 @@
-.deck-area {
-  position: relative;
+.deck-fixed {
+  position: fixed;
+  top: 40px;
+  right: 40px;
   width: 120px;
   height: 160px;
-  margin: 30px 0;
+  z-index: 40;
 }
 
-.deck-img {
-  width: 120px;
+.deck-area {
+  position: absolute;
+  right: 30px;
 }
 
-/* carta que sai do baralho */
+.game-page {
+  min-height: 100vh;
+  background-color: #fff;
+
+}
+
+.game-container {
+  margin: 40px;
+  border-top: 1px solid rgba(0, 0, 0, .3);
+  padding-top: 3rem;
+}
+
+.game-board {
+  position: relative;
+  background: #ededed;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 2px 2px 13px rgba(0, 0, 0, .3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
 .flying-card {
   position: absolute;
   top: 0;
   left: 0;
   width: 90px;
   border-radius: 8px;
-  pointer-events: none;
   z-index: 50;
-  transform: translate(0, 0);
 }
 
-/* animação */
 .flying-card.animate {
   animation: drawCard 0.4s ease-out forwards;
 }
 
 @keyframes drawCard {
   to {
-    transform: translate(220px, 260px);
-    /* AJUSTE até cair na mão */
+    transform: translate(-420px, 180px);
   }
+}
+
+.dealer-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.dealer-area {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dealer-score {
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+.mesa-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mesa-title {
+  margin-top: -40px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 2px;
+}
+
+.player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-cards {
+  display: flex;
+  gap: 12px;
+}
+
+.mesa-click {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mesa-click:hover {
+  transform: scale(1.01);
+  opacity: 0.95;
+}
+
+
+.player-score {
+  margin-top: 6px;
+  color: #6b7280;
+}
+
+.actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.btn-pass {
+  background: #C13636;
+}
+
+.btn-hit {
+  background: #0F821A;
+}
+
+.toast {
+  width: 240px;
+  padding: 14px;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toast-win {
+  background: #0F821A;
+}
+
+.toast-lose {
+  background: #C13636;
+}
+
+.dashboard-link {
+  position: absolute;
+  bottom: 30px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #3963F7;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+}
+
+.dashboard-link:hover {
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+.dashboard-link mat-icon {
+  font-size: 20px;
 }

@@ -1,0 +1,53 @@
+.mat-mdc-snack-bar-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.mat-mdc-snack-bar-container.toast-win .mdc-snackbar__surface {
+  background-color: rgba(16, 133, 35, 0.7) !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mat-mdc-snack-bar-container.toast-lose .mdc-snackbar__surface {
+  background-color: rgba(193, 40, 40, 0.7) !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.toast-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+  min-width: 240px;
+  text-align: center;
+  color: #fff;
+}
+
+.toast-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.toast-message {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.toast-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}

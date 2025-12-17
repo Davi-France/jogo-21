@@ -17,7 +17,6 @@ export class GameService {
       }
     }
 
-    // Ajuste dos ases
     while (total > 21 && aces > 0) {
       total -= 10;
       aces--;
