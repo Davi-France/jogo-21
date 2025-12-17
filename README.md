@@ -1,27 +1,115 @@
-# Jogo21
+# 🃏 JOGO 21 — Blackjack
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+Projeto completo de Blackjack (21) desenvolvido com Angular, seguindo regras clássicas do jogo, interface moderna e persistência de dados no navegador.
 
-## Development server
+## 🔗 Aplicação online (Vercel):
+👉 (https://jogo-21-teste.vercel.app/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🎯 Objetivo do Projeto
 
-## Code scaffolding
+### Desenvolver um jogo funcional de Blackjack com:
+- Sistema de usuários (login/cadastro)
+- Mesa de jogo interativa
+- Histórico de partidas
+- Dashboard com estatísticas
+- Interface seguindo o Figma
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🛠 Tecnologias Utilizadas
+Core
 
-## Build
+- Angular 18+
+- TypeScript
+- Angular Router
+- RxJS
+- Angular Forms
+- UI / Estilo
+- CSS tradicional (SCSS/CSS)
+  
+> Tailwind CSS
+Utilizado principalmente para:
+- Layout (flex / grid)
+- Alinhamentos rápidos e consistentes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Usado em conjunto com o Tailwind para:
+- Ajustes finos de tipografia
+- Tamanhos específicos de componentes
+- Estilos mais precisos e controlados
 
-## Running unit tests
+## 🃏 Sistema de Cartas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- As cartas são locais, não dependem de API externa.
+- Todas as imagens das cartas estão em public/
 
-## Running end-to-end tests
+Cada carta possui:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Naipe
+- Valor
+- Pontuação
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- O baralho é gerado dinamicamente no DeckService, embaralhado em memória e as cartas são distribuídas conforme o jogo avança.
+
+## 🧠 Regras Implementadas
+
+Objetivo: chegar a 21 pontos ou o mais próximo possível
+
+- Ás vale 1 ou 11
+- J, Q, K valem 10
+- Bust (>21) = derrota automática
+- Dealer compra cartas até atingir 17 ou mais
+- Empate com o dealer = derrota do jogador
+- Cartas do dealer ficam ocultas até o jogador passar
+
+## 🔐 Login e Cadastro
+
+- O sistema não possui backend
+- Os usuários são salvos no localStorage
+- Login feito apenas com e-mail
+- O usuário logado é mantido em sessão via localStorage
+
+Exemplo:
+´´´bash
+localStorage.setItem('currentUser', JSON.stringify(user));
+´´´
+
+## 📊 Histórico de Partidas
+
+Após cada partida finalizada:
+
+O resultado é salvo no localStorage
+
+Cada partida contém:
+
+- Usuário
+- Data
+- Resultado (WIN / LOSS)
+- Pontuação do jogador
+- Pontuação do dealer
+- Cartas do jogador
+- Cartas do dealer
+
+Esses dados alimentam:
+- Tela de histórico
+- Dashboard (vitórias, derrotas e total de partidas)
+
+
+# Clonar o repositório
+´´´bash
+git clone https://github.com/seu-repositorio/jogo-21.git
+´´´
+
+
+# Entrar na pasta
+´´´bash
+cd jogo-21
+´´´
+
+# Instalar dependências
+´´´bash
+npm install
+´´´
+
+´´´bash
+# Rodar o projeto
+ng serve
+´´´
