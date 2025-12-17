@@ -68,9 +68,10 @@ Objetivo: chegar a 21 pontos ou o mais próximo possível
 - O usuário logado é mantido em sessão via localStorage
 
 Exemplo:
-´´´bash
+
+```bash
 localStorage.setItem('currentUser', JSON.stringify(user));
-´´´
+```
 
 ## 📊 Histórico de Partidas
 
@@ -94,22 +95,22 @@ Esses dados alimentam:
 
 
 # Clonar o repositório
-´´´bash
+```bash
 git clone https://github.com/seu-repositorio/jogo-21.git
-´´´
+```
 
 
 # Entrar na pasta
-´´´bash
+```bash
 cd jogo-21
-´´´
+```
 
 # Instalar dependências
-´´´bash
+```bash
 npm install
-´´´
+```
 
-´´´bash
+```bash
 # Rodar o projeto
 ng serve
-´´´
+```
